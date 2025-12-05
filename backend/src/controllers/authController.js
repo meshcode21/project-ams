@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import db from '../config/db.js'
+import {dbpool as db} from '../config/db.js'
 
 export const loginUser = (req, res) => {
     const { username, password: clientPassword } = req.body;
@@ -9,7 +9,7 @@ export const loginUser = (req, res) => {
     db.query(query, [username])
         .then(results => {
             // Check if user was not found
-            if (results[0].length === 0) {
+            if (results[0].length === 0) { 
                 return res.status(401).json({ message: "Invalid username or password" });
             }
 
