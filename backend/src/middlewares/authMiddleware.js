@@ -24,7 +24,7 @@ export const authenticate = async (req, res, next) => {
 
         // Adding user data to request body.
         req.user = userData;
-        console.log("i am authentication middleware...")
+        console.log("i am authentication middleware...",req.user)
 
         next();
 
